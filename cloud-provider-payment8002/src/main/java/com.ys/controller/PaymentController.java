@@ -36,7 +36,7 @@ public class PaymentController {
         Payment payment =  paymentService.getPaymentById(Id);
         log.info("...... " + payment);
         if(payment != null){
-            return new CommonResult(200,"success, serverPort="+serverPort,payment);
+            return new CommonResult(200,"success,serverPort="+serverPort,payment);
         }else{
             return new CommonResult(444,"failed = "+Id, null);
         }
