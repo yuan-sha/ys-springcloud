@@ -8,3 +8,4 @@ CREATE TABLE payment(
                      id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                      serial VARCHAR(200)
 );
+Add a new github user
