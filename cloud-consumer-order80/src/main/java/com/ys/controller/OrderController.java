@@ -4,6 +4,7 @@ package com.ys.controller;
 import com.ys.entities.CommonResult;
 import com.ys.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,4 +30,13 @@ public class OrderController {
         return restTemplate.getForObject(REST_URL_PREFIX+"/payment/get/"+id, CommonResult.class);
     }
 
+    @GetMapping(value = "/consumer/payment/getForEntity/{id}")
+    public CommonResult getPaymentById2(@PathVariable("id") Long id) {
+        ResponseEntity<CommonResult> entity = restTemplate.getForEntity(REST_URL_PREFIX+"/payment/get/"+id, CommonResult.class);
+        if(entity.getStatusCode().is2xxSuccessful()){
+            return entity.getBody();
+        }else{
+            return new CommonResult(444,"failed");
+        }
+    }
 }
