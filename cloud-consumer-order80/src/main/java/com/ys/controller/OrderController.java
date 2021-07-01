@@ -20,18 +20,31 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
-    @PostMapping(value = "/consumer/payment/create")
+    @PostMapping(value = "/consumer/payment/post/create")
     public CommonResult create(Payment payment) {
         return restTemplate.postForObject(REST_URL_PREFIX+"/payment/create",payment,CommonResult.class);
     }
 
+    @PostMapping(value = "/consumer/payment/postForEntity/create")
+    public CommonResult create2(Payment payment) {
+        ResponseEntity<CommonResult> entity =  restTemplate.postForEntity(REST_URL_PREFIX+"/payment/create",payment,CommonResult.class);
+        if(entity.getStatusCode().is2xxSuccessful()){
+            return entity.getBody();
+        }else{
+            return new CommonResult(444,"failed");
+        }
+    }
+
+
     @GetMapping(value = "/consumer/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
+        // GetForObject: JSON
         return restTemplate.getForObject(REST_URL_PREFIX+"/payment/get/"+id, CommonResult.class);
     }
 
     @GetMapping(value = "/consumer/payment/getForEntity/{id}")
     public CommonResult getPaymentById2(@PathVariable("id") Long id) {
+        // RespnonseEntity, Response Header, Status Code, Response Boday
         ResponseEntity<CommonResult> entity = restTemplate.getForEntity(REST_URL_PREFIX+"/payment/get/"+id, CommonResult.class);
         if(entity.getStatusCode().is2xxSuccessful()){
             return entity.getBody();
