@@ -13,7 +13,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.ys.entities
+  type-aliases-package: com.springcloud.entities
 eureka:
   client:
     register-with-eureka: true
