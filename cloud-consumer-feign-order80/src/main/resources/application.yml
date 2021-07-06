@@ -21,3 +21,7 @@ feign:
         ConnectTimeOut: 5000
         #指建立连接后从服务端读取到可用资源所用的时间
         ReadTimeOut: 5000
+
+logging:
+  level:
+    com.springcloud.service.PaymentFeitgnService: debug
