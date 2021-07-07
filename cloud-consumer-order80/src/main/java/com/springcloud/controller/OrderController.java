@@ -48,7 +48,13 @@ public class OrderController {
     @GetMapping(value = "/consumer/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         // GetForObject: JSON
-        return restTemplate.getForObject(REST_URL_PREFIX+"/payment/get/"+id, CommonResult.class);
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        if(instances == null || instances.size() <= 0){
+            return null;
+        }
+        ServiceInstance serviceInstance = loadBalancer.instances(instances);
+        URI uri = serviceInstance.getUri();
+        return restTemplate.getForObject(uri+"/payment/get/"+id, CommonResult.class);
     }
 
     @GetMapping(value = "/consumer/payment/getForEntity/{id}")
