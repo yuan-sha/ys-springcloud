@@ -21,6 +21,7 @@ spring:
           uri: lb://cloud-payment-service #匹配后提供服务的路由地址
           predicates:
             - Path=/payment/lb/**
+            - Cookie=username,zzyy
 
 eureka:
   instance:
