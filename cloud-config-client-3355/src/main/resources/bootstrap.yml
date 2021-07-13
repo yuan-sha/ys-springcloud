@@ -18,4 +18,15 @@ eureka:
     fetch-registry: true
     service-url:
       #defaultZone: http://localhost:7001/eureka
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka700 .com:7002/eureka
+
+ #暴漏监控
+management:  #actuator
+  server:
+    port: 3355
+  endpoints:
+    web:
+      #      base-path: / #默认是/actuator 前缀，可以在这里修改
+      exposure:
+        include: "*"  #打开全部请求端点
+#        include: refresh,health,info #打开部分
