@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:yuan-sha/microservicecloud-config.git
+          uri: https://github.com/yuan-sha/microservicecloud-config
           #搜索目录
           search-paths:
             - microservicecloud-config
