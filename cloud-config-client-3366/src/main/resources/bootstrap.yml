@@ -1,5 +1,5 @@
 server:
-  port: 3355
+  port: 3366
 
 spring:
   application:
@@ -28,7 +28,7 @@ eureka:
  #暴漏监控
 management:  #actuator
   server:
-    port: 3355
+    port: 3366
   endpoints:
     web:
       #      base-path: / #默认是/actuator 前缀，可以在这里修改
