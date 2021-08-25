@@ -1,0 +1,28 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: cloud-payment-service-alibaba
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB03?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: LasVegas@312
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.springcloud.entities
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
