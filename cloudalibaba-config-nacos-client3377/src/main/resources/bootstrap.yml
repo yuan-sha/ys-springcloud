@@ -11,6 +11,7 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yaml
+        group: TEST_GROUP
 
 #${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
 #cloud-config-alibaba-dev.yaml
